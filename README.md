@@ -43,12 +43,12 @@ order by Percentage desc;
 ```
 
 ## 4. How many customers did each employee support, what is the average revenue for each sale, and what is their total sale?
-
+```
 select employees.EmployeeId, ifnull(count(customers.CustomerId),0) as 'Number_of_customer_supported' 
 from employees
 left join customers on employees.EmployeeId =customers.SupportRepId 
 group by employees.EmployeeId
-
+```
 
 # **Intermediate Challenge**
 
