@@ -1,8 +1,7 @@
 # Codecademy-DS-Independent-Project-
 Music store analysis 
 
-Raw data can be found here: 
-https://www.sqlitetutorial.net/sqlite-sample-database/
+Raw data can be found [here](https://www.sqlitetutorial.net/sqlite-sample-database/)
 
 **Basic Requirements**
 
@@ -15,8 +14,8 @@ on A.TrackId =B.TrackId
 group by A.TrackId
 order by Number_of_Appearance DESC;
 
-Which track generated the most revenue? which album? which genre?
+2. Which track generated the most revenue? which album? which genre?
 
-Which countries have the highest sales revenue? What percent of total revenue does each country make up?
+3. Which countries have the highest sales revenue? What percent of total revenue does each country make up?
 
-How many customers did each employee support, what is the average revenue for each sale, and what is their total sale?
+4. How many customers did each employee support, what is the average revenue for each sale, and what is their total sale?
