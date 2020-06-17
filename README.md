@@ -30,7 +30,7 @@ order by Revenue desc;
 ```
 
 ## 3. Which countries have the highest sales revenue? What percent of total revenue does each country make up?
-
+```
 Select T.Country, T.Revenue, Round((T.Revenue/(select sum(invoice_items.Quantity * invoice_items.UnitPrice) from invoice_items))*100, 2) as Percentage
 from 
 (select invoices.BillingCountry as Country,Round(sum(invoice_items.Quantity * invoice_items.UnitPrice),2) as Revenue
@@ -40,6 +40,7 @@ on invoices.InvoiceId =invoice_items.InvoiceId
 group by invoices.BillingCountry) T, invoice_items
 group by T.Country
 order by Percentage desc; 
+```
 
 ## 4. How many customers did each employee support, what is the average revenue for each sale, and what is their total sale?
 
