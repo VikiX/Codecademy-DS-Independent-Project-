@@ -6,7 +6,14 @@ https://www.sqlitetutorial.net/sqlite-sample-database/
 
 **Basic Requirements**
 
-Which tracks appeared in the most playlists? how many playlist did they appear in?
+1. Which tracks appeared in the most playlists? how many playlist did they appear in?
+```
+SELECT  A.TrackId, B.name, A.PlaylistId, count(A.PlaylistId) as "Number_of_Appearance" 
+from playlist_track A 
+join tracks B
+on A.TrackId =B.TrackId
+group by A.TrackId
+order by Number_of_Appearance DESC;
 
 Which track generated the most revenue? which album? which genre?
 
