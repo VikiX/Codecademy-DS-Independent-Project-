@@ -14,6 +14,7 @@ on A.TrackId =B.TrackId
 group by A.TrackId
 order by Number_of_Appearance DESC;
 
+
 2. Which track generated the most revenue? which album? which genre?
 
 3. Which countries have the highest sales revenue? What percent of total revenue does each country make up?
