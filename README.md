@@ -44,10 +44,15 @@ order by Percentage desc;
 
 ## 4. How many customers did each employee support, what is the average revenue for each sale, and what is their total sale?
 ```
-select employees.EmployeeId, ifnull(count(customers.CustomerId),0) as 'Number_of_customer_supported' 
+select employees.EmployeeId, employees.FirstName, employees.LastName, ifnull(count(distinct customers.CustomerId),0) as 'Number_of_customer_supported', 
+round((sum(invoices.Total)/ count(distinct customers.CustomerId)),2) as Average_sales_per_employee,
+round(sum(invoices.Total),2) as Total_Revenue_per_employee
 from employees
-left join customers on employees.EmployeeId =customers.SupportRepId 
+join customers on employees.EmployeeId =customers.SupportRepId 
+join invoices on customers.CustomerId =invoices.CustomerId
 group by employees.EmployeeId
+order by Total_Revenue_per_employee desc; 
+
 ```
 
 # **Intermediate Challenge**
