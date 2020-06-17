@@ -13,7 +13,7 @@ join tracks B
 on A.TrackId =B.TrackId
 group by A.TrackId
 order by Number_of_Appearance DESC;
-
+```
 
 ## 2. Which track generated the most revenue? which album? which genre?
 
@@ -21,4 +21,12 @@ order by Number_of_Appearance DESC;
 
 ## 4. How many customers did each employee support, what is the average revenue for each sale, and what is their total sale?
 
-# **Additional Challenges**
+# **Intermediate Challenge**
+
+## 5. Do longer or shorter length albums tend to generate more revenue?
+
+## 6. Is the number of times a track appear in any playlist a good indicator of sales?
+
+# **Advanced Challenge** 
+
+## 7. How much revenue is generated each year, and what is its percent change 31 from the previous year?
