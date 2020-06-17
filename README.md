@@ -3,9 +3,9 @@ Music store analysis
 
 Raw data can be found [here](https://www.sqlitetutorial.net/sqlite-sample-database/)
 
-#**Basic Requirements**
+# **Basic Requirements**
 
-##1. Which tracks appeared in the most playlists? how many playlist did they appear in?
+## 1. Which tracks appeared in the most playlists? how many playlist did they appear in?
 ```
 SELECT  A.TrackId, B.name, A.PlaylistId, count(A.PlaylistId) as "Number_of_Appearance" 
 from playlist_track A 
