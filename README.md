@@ -16,6 +16,18 @@ order by Number_of_Appearance desc;
 ```
 
 ## 2. Which track generated the most revenue? which album? which genre?
+ ```
+select I.TrackId, T.name as Track_Name, A.Title as Album_Name, G.name as Genre, sum(I.UnitPrice * I.Quantity) as Revenue 
+from invoice_items I
+join tracks T
+on I.TrackId = T.TrackId
+join albums A 
+on T.AlbumId = A.AlbumId
+join genres G
+on T.GenreId = G.GenreId
+group by I.TrackId
+order by Revenue desc; 
+```
 
 ## 3. Which countries have the highest sales revenue? What percent of total revenue does each country make up?
 
