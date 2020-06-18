@@ -57,7 +57,21 @@ order by Total_Revenue_per_employee desc;
 
 # **Intermediate Challenge**
 
-## 5. Do longer or shorter length albums tend to generate more revenue?
+## 5. Do longer or shorter length albums tend to generate more revenue? 
+```
+with albumn_length as (select sum(tracks.Milliseconds)/1000/60 as Length, tracks.AlbumId from tracks group by tracks.AlbumId), 
+revenue as (select tracks.AlbumId, sum(invoice_items.Quantity * invoice_items.UnitPrice) as Revenue
+from tracks 
+join invoice_items on tracks.TrackId =invoice_items.TrackId
+group by tracks.AlbumId) 
+
+select albumn_length.AlbumId, albums.Title, albumn_length.Length as Length_in_minutes, revenue.Revenue 
+from albumn_length
+join revenue on albumn_length.AlbumId =revenue.AlbumId
+join albums on albumn_length.AlbumId = albums.AlbumId
+group by albumn_length.AlbumId
+order by Revenue desc; 
+```
 
 ## 6. Is the number of times a track appear in any playlist a good indicator of sales?
 
