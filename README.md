@@ -1,4 +1,4 @@
-# Codecademy-DS-Independent-Project-
+# Codecademy-DS-Music Shop Sales Analysis #
 Music store analysis 
 
 Raw data can be found [here](https://www.sqlitetutorial.net/sqlite-sample-database/)
