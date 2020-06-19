@@ -74,7 +74,34 @@ order by Revenue desc;
 ```
 
 ## 6. Is the number of times a track appear in any playlist a good indicator of sales?
+```
+With Track_Revenue as (select TrackId, UnitPrice * Quantity as Revenue  from invoice_items group by TrackId) 
+
+select  A.TrackId, B.Name, count(A.PlaylistId) as Appearance_in_Playlist, 
+Track_Revenue.Revenue 
+from playlist_track A
+join tracks B on A.TrackId = B.TrackId
+join Track_Revenue on A.TrackId =Track_Revenue.TrackId
+group by A.TrackId
+order by Appearance_in_Playlist Desc, Revenue Desc; 
+```
 
 # **Advanced Challenge** 
 
-## 7. How much revenue is generated each year, and what is its percent change 31 from the previous year?
+## 7. How much revenue is generated each year, and what is its percent change from the previous year?
+```
+Select A.Year, A.Revenue, ifnull(Round((A.Revenue- B.Revenue)/B.Revenue * 100,2),0) as Percentage_Change
+from 
+(select ROW_NUMBER() OVER(ORDER BY strftime('%Y', I.InvoiceDate) ASC) AS Row, strftime('%Y', I.InvoiceDate) as Year, ROUND(sum(R.Quantity * R.UnitPrice),2) as Revenue 
+from invoices I 
+Join invoice_items R on I.InvoiceId =R.InvoiceId 
+group by Year) A 
+left join 
+  
+ (select ROW_NUMBER() OVER(ORDER BY strftime('%Y', I.InvoiceDate) ASC) AS Row, strftime('%Y', I.InvoiceDate) as Year, ROUND(sum(R.Quantity * R.UnitPrice),2) as Revenue 
+from invoices I 
+Join invoice_items R on I.InvoiceId =R.InvoiceId 
+group by Year) B 
+on A.Row = B.Row+1 
+```
+
